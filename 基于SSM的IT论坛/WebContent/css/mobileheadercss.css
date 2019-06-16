@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+.mobile-header-nav {
+	background-color: #393D49;
+	width: 100%;
+	position: fixed;
+	height: 70px;
+	z-index: 80;
+}
+.header-nav-btn {
+	float: left;
+	margin-top: 18px;
+	width: 20%;
+	height: 40px
+}
+.header-nav-content{
+	float: left;
+	margin-top: 22px;
+	font-size: 22px;
+	width: 50%	
+}
+.header-nav-title {
+	float: left;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+.header-zhanwei {
+	
+	width: 100%;
+	float:left;
+	height: 70px;	
+}
+.mobile-list {
+	position: fixed;
+	z-index: 100;
+	margin-left: -25px;
+	margin-top: 70px;
+	display: none;
+}
+.header-nav-search {
+	float: right;
+	margin-top: 18px;
+	width: 20%;
+	height: 40px	
+}
+.mobile-nav-search {
+	width: 100%;
+	display: none;
+	background-color: orange;
+}
+.mobile-nav-search .search-input {
+	margin: 5px 5px 5px 10px;
+	width: 97%;
+	height: 30px;
+}

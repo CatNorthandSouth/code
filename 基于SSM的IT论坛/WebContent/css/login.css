@@ -1,0 +1,222 @@
+* {
+	margin: 0 auto;
+}
+
+#_start {
+	/*position:absolute;*/
+	height: 0px;
+	width: 0px;
+	background: #D6E9C6;
+	color: white;
+	text-align: center;
+	line-height: 40px;
+}
+
+#_close {
+	float: right;
+	height: 0px;
+	width: 0px;
+	background: none;
+	/* background-color:#5cb85c; */
+	color: white;
+	border-left: 1px solid white;
+	border-bottom: 1px solid white;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+#login_container,#regist_container {
+	width: 360px;
+	text-align: center;
+	display: none;
+	margin-top: 30px;
+}
+
+#lab1 {
+	width: 330px;
+	border-bottom: 1px solid #000000;
+	text-align: left;
+	font-family: '寰蒋闆呴粦';
+}
+
+#lab_login {
+	font-size: 30px;
+	height: 40px;
+	color: #000000;
+}
+
+#lab_toRegist,#lab_toLogin {
+	font-size: 15px;
+	line-height: 55px;
+	float: right;
+	color: #000000;
+}
+
+#lab_type1,
+#lab_type2 {
+	font-size: 16px;
+	float: left;
+	color: #8C8C8C;
+}
+
+#login_number,
+#login_password {
+	height: 50px;
+	border-radius: 0;
+	margin-top: 10px;
+}
+
+/* 娉ㄥ唽琛ㄥ崟 寮�濮� */
+#regist_account,
+#regist_password1,
+#regist_password2,
+#regist_email,
+#regist_vcode
+{
+	height: 42px;
+	border-radius: 0;
+	margin-top: 5px;
+}
+#regist_vcode{
+	width:180px;
+	display: inline-block;
+	float: left;
+}
+/* 娉ㄥ唽琛ㄥ崟 缁撴潫 */
+
+/*鑾峰彇楠岃瘉鐮�*/
+#getVCode{
+	width:125px;
+	height: 40px;
+	border-radius: 0;
+	margin-top: 6px;
+	float: right;
+}
+/*鐧婚檰鎸夐挳*/
+#login_btn {
+	float: left;
+	width: 100px;
+	height: 40px;
+	border-radius: 0;
+	margin-top: 20px;
+}
+/*娉ㄥ唽鎸夐挳*/
+#regist_btn{
+	width: 330px;
+	height: 40px;
+	border-radius: 0;
+	margin-top: 20px;
+}
+/*璁颁綇瀵嗙爜锛屾壘鍥炲瘑鐮�*/
+#rememberOrfindPwd {
+	display: inline-block;
+	height: 40px;
+	line-height: 70px;
+	margin-top: 15px;
+	float: right;
+}
+/*QQ鐧婚檰鏍峰紡*/
+#login_QQ {
+	width: 150px;
+	height: 40px;
+	float: left;
+	border-radius: 0;
+}
+/*寰崥鐧婚檰鏍峰紡*/
+#login_WB {
+	width: 150px;
+	height: 40px;
+	float: right;
+	border-radius: 0;
+}
+/*鐧婚檰琛ㄥ崟瀹瑰櫒*/
+#form_container1 {
+	width: 330px;
+	height: 240px;
+	border-bottom: 1px solid #FFFFFF;
+}
+/*娉ㄥ唽琛ㄥ崟瀹瑰櫒*/
+#form_container2 {
+	width: 330px;
+	height: 300px;
+	border-bottom: 1px solid #FFFFFF;
+}
+/*Tooltips*/
+.tooltips_main{
+	position:absolute;
+	left:0;
+	margin:-5px 0 0 2px;
+	z-index:999;
+}
+.tooltips_box,.tooltips,.msg{
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	position:relative;
+	border-style:solid;
+	border-color:#FF1F1F;
+}
+.tooltips,.msg{
+	border-width:0 1px;
+	*left:-2px;
+	background-color:#FFCFCF;
+}
+.tooltips_box{
+	border-width:1px;
+	line-height:1.5;
+}
+.tooltips{
+	margin:0 -2px;
+}
+.msg{
+	margin:1px -2px;
+	padding:0 6px;
+	color:#2F2C2C;
+	text-shadow:0 1px 0 #FFFFFF;
+	font-size:12px;
+}
+
+/*regist*/
+.register{
+	float:left;
+	padding:25px 50px;
+}
+.register .form_submit{
+	float:left;
+	border-bottom:1px solid #bfbfbf;
+	width:888px;
+}
+.register .form_submit .fieldset{
+	float:left;
+}
+.register .form_submit .fieldset .field-group{
+	float:left;
+	height:55px;
+}
+.register .form_submit .fieldset .field-group .title{
+	float:left;
+	width:120px;
+	text-align:right;
+	margin:4px 0 0 0;
+	font-size:14px;
+}
+.register .form_submit .fieldset .field-group .control-group{
+	float:left;
+	width:350px;
+	margin:0 10px;
+}
+.register .form_submit .fieldset .field-group .tips{
+	float:left;
+	width:250px;
+	color:#bfbfbf;
+}
+.register .div_submit{
+	float:left;
+	width:875px;
+	margin:10px 5px;
+}
+.register .div_submit .div_submit_button{
+	float:right;
+}
+/*end regist*/

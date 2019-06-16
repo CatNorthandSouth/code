@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsPostsMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsPosts" >
+    <id column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="post_title" property="postTitle" jdbcType="VARCHAR" />
+    <result column="post_bibo_id" property="postBiboId" jdbcType="INTEGER" />
+    <result column="post_smbo_id" property="postSmboId" jdbcType="INTEGER" />
+    <result column="post_admin_id" property="postAdminId" jdbcType="INTEGER" />
+    <result column="post_admin" property="postAdmin" jdbcType="VARCHAR" />
+    <result column="post_create_time" property="postCreateTime" jdbcType="TIMESTAMP" />
+    <result column="post_update_time" property="postUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="post_content" property="postContent" jdbcType="VARCHAR" />
+    <result column="post_good_count" property="postGoodCount" jdbcType="INTEGER" />
+    <result column="post_bad_count" property="postBadCount" jdbcType="INTEGER" />
+    <result column="post_reward" property="postReward" jdbcType="INTEGER" />
+    <result column="post_score" property="postScore" jdbcType="INTEGER" />
+    <result column="post_ispay" property="postIspay" jdbcType="INTEGER" />
+    <result column="post_islocked" property="postIslocked" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    post_id, post_title, post_bibo_id, post_smbo_id,post_admin_id , post_admin, post_create_time, post_update_time, 
+    post_content, post_good_count, post_bad_count, post_reward, post_score, post_ispay, 
+    post_islocked
+  </sql>
+  <select id="selectGongGao" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts where post_smbo_id = 0 and post_bibo_id = 0
+  </select>  
+  <select id="findHGongGao" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where
+    	  post_update_time between #{postCreateTime,jdbcType=VARCHAR} and #{postUpdateTime,jdbcType=VARCHAR}
+    	and
+      post_title like concat('%',#{postTitle,jdbcType=VARCHAR},'%')
+        and post_smbo_id = 0 and post_bibo_id = 0
+
+  </select>
+  <select id="SelectAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+  </select>
+  
+  <select id="findHGongGao1" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where
+    	  post_update_time between #{postCreateTime,jdbcType=VARCHAR} and #{postUpdateTime,jdbcType=VARCHAR} 
+    	  and post_smbo_id = 0 and post_bibo_id = 0
+  </select>
+  <select id="findHGongGao2" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where  post_title like concat('%',#{postTitle,jdbcType=VARCHAR},'%') and post_smbo_id = 0 and post_bibo_id = 0	 
+  </select>  
+  
+  
+  
+  <select id="findHpost" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where
+    	  post_update_time between #{postCreateTime,jdbcType=VARCHAR} and #{postUpdateTime,jdbcType=VARCHAR}
+    	and
+      post_title like concat('%',#{postTitle,jdbcType=VARCHAR},'%')
+        and post_smbo_id != 0 and post_bibo_id != 0
+
+  </select>
+  <select id="findHpost1" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where
+    	  post_update_time between #{postCreateTime,jdbcType=VARCHAR} and #{postUpdateTime,jdbcType=VARCHAR} 
+    	  and post_smbo_id != 0 and post_bibo_id != 0
+  </select>
+  <select id="findHpost2" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where  post_title like concat('%',#{postTitle,jdbcType=VARCHAR},'%') and post_smbo_id != 0 and post_bibo_id != 0	 
+  </select>
+  <select id="selectSearchPosts" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where  post_admin like concat('%',#{postAdmin,jdbcType=VARCHAR},'%') 
+    		or post_title like concat('%',#{postTitle,jdbcType=VARCHAR},'%') 
+    		or post_content like concat('%',#{postContent,jdbcType=VARCHAR},'%')
+    		and post_smbo_id != 0 and post_bibo_id != 0
+  </select>
+  <select id="selectMyFaBu" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where post_admin_id = #{postAdminId,jdbcType=INTEGER}  and post_smbo_id != 0 and post_bibo_id != 0
+  </select>
+  
+  <select id="selectPostsByBoardzero" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where  post_smbo_id = #{postSmboId,jdbcType=INTEGER} and post_ispay = 0
+  </select>
+  <select id="selectPostsByBoardNotzero" resultMap="BaseResultMap"  parameterType="cn.ts.entity.BsPosts">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where  post_smbo_id = #{postSmboId,jdbcType=INTEGER} and post_ispay != 0
+  </select>
+  <select id="selectPostsByNotice" resultMap="BaseResultMap"  parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where post_id = #{postId,jdbcType=INTEGER} and  post_smbo_id = 0 and post_bibo_id = 0
+  </select>
+  <select id="selectPostsByNoticeList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where post_smbo_id = 0 and post_bibo_id = 0
+  </select>  
+  
+  <select id="selectPostsByPostId" resultMap="BaseResultMap"  parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts 
+    where post_id = #{postId,jdbcType=INTEGER} 
+  </select>
+  <select id="selectPosts" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_posts where post_smbo_id != 0 and post_bibo_id != 0
+  </select>
+  <select id="selectPostsbyCommend" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from (select *
+    from bs_posts p inner join  bs_post_commend pc on(p.post_id = pc.poco_post_id)) b 
+    ORDER BY b.poco_id DESC
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_posts
+    where post_id = #{postId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertPosts" parameterType="cn.ts.entity.BsPosts" >
+    insert into bs_posts (post_id, post_title, post_bibo_id, 
+      post_smbo_id, post_admin_id, post_admin, 
+      post_create_time, post_update_time, post_content, 
+      post_good_count, post_bad_count, post_reward, 
+      post_score, post_ispay, post_islocked)
+    values (#{postId,jdbcType=INTEGER}, #{postTitle,jdbcType=VARCHAR}, #{postBiboId,jdbcType=INTEGER}, 
+      #{postSmboId,jdbcType=INTEGER}, #{postAdminId,jdbcType=INTEGER}, #{postAdmin,jdbcType=VARCHAR}, 
+      #{postCreateTime,jdbcType=TIMESTAMP}, #{postUpdateTime,jdbcType=TIMESTAMP}, #{postContent,jdbcType=VARCHAR}, 
+      #{postGoodCount,jdbcType=INTEGER}, #{postBadCount,jdbcType=INTEGER}, #{postReward,jdbcType=INTEGER}, 
+      #{postScore,jdbcType=INTEGER}, #{postIspay,jdbcType=INTEGER}, #{postIslocked,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsPosts" >
+    insert into bs_posts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postId != null" >
+        post_id,
+      </if>
+      <if test="postTitle != null" >
+        post_title,
+      </if>
+      <if test="postBiboId != null" >
+        post_bibo_id,
+      </if>
+      <if test="postSmboId != null" >
+        post_smbo_id,
+      </if>
+      <if test="postAdminId != null" >
+        post_admin_id,
+      </if>
+      <if test="postAdmin != null" >
+        post_admin,
+      </if>
+      <if test="postCreateTime != null" >
+        post_create_time,
+      </if>
+      <if test="postUpdateTime != null" >
+        post_update_time,
+      </if>
+      <if test="postContent != null" >
+        post_content,
+      </if>
+      <if test="postGoodCount != null" >
+        post_good_count,
+      </if>
+      <if test="postBadCount != null" >
+        post_bad_count,
+      </if>
+      <if test="postReward != null" >
+        post_reward,
+      </if>
+      <if test="postScore != null" >
+        post_score,
+      </if>
+      <if test="postIspay != null" >
+        post_ispay,
+      </if>
+      <if test="postIslocked != null" >
+        post_islocked,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postId != null" >
+        #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="postTitle != null" >
+        #{postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="postBiboId != null" >
+        #{postBiboId,jdbcType=INTEGER},
+      </if>
+      <if test="postSmboId != null" >
+        #{postSmboId,jdbcType=INTEGER},
+      </if>
+      <if test="postAdminId != null" >
+        #{postAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="postAdmin != null" >
+        #{postAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="postCreateTime != null" >
+        #{postCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postUpdateTime != null" >
+        #{postUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postContent != null" >
+        #{postContent,jdbcType=VARCHAR},
+      </if>
+      <if test="postGoodCount != null" >
+        #{postGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="postBadCount != null" >
+        #{postBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="postReward != null" >
+        #{postReward,jdbcType=INTEGER},
+      </if>
+      <if test="postScore != null" >
+        #{postScore,jdbcType=INTEGER},
+      </if>
+      <if test="postIspay != null" >
+        #{postIspay,jdbcType=INTEGER},
+      </if>
+      <if test="postIslocked != null" >
+        #{postIslocked,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsPosts" >
+    update bs_posts
+    <set >
+      <if test="postTitle != null" >
+        post_title = #{postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="postBiboId != null" >
+        post_bibo_id = #{postBiboId,jdbcType=INTEGER},
+      </if>
+      <if test="postSmboId != null" >
+        post_smbo_id = #{postSmboId,jdbcType=INTEGER},
+      </if>
+      <if test="postAdminId != null" >
+        post_admin_id = #{postAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="postAdmin != null" >
+        post_admin = #{postAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="postCreateTime != null" >
+        post_create_time = #{postCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postUpdateTime != null" >
+        post_update_time = #{postUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postContent != null" >
+        post_content = #{postContent,jdbcType=VARCHAR},
+      </if>
+      <if test="postGoodCount != null" >
+        post_good_count = #{postGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="postBadCount != null" >
+        post_bad_count = #{postBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="postReward != null" >
+        post_reward = #{postReward,jdbcType=INTEGER},
+      </if>
+      <if test="postScore != null" >
+        post_score = #{postScore,jdbcType=INTEGER},
+      </if>
+      <if test="postIspay != null" >
+        post_ispay = #{postIspay,jdbcType=INTEGER},
+      </if>
+      <if test="postIslocked != null" >
+        post_islocked = #{postIslocked,jdbcType=INTEGER},
+      </if>
+    </set>
+    where post_id = #{postId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsPosts" >
+    update bs_posts
+    set post_title = #{postTitle,jdbcType=VARCHAR},
+      post_bibo_id = #{postBiboId,jdbcType=INTEGER},
+      post_smbo_id = #{postSmboId,jdbcType=INTEGER},
+      post_admin_id = #{postAdminId,jdbcType=INTEGER},
+      post_admin = #{postAdmin,jdbcType=VARCHAR},
+      post_create_time = #{postCreateTime,jdbcType=TIMESTAMP},
+      post_update_time = #{postUpdateTime,jdbcType=TIMESTAMP},
+      post_content = #{postContent,jdbcType=VARCHAR},
+      post_good_count = #{postGoodCount,jdbcType=INTEGER},
+      post_bad_count = #{postBadCount,jdbcType=INTEGER},
+      post_reward = #{postReward,jdbcType=INTEGER},
+      post_score = #{postScore,jdbcType=INTEGER},
+      post_ispay = #{postIspay,jdbcType=INTEGER},
+      post_islocked = #{postIslocked,jdbcType=INTEGER}
+    where post_id = #{postId,jdbcType=INTEGER}
+  </update>
+</mapper>

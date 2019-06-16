@@ -1,0 +1,328 @@
+body{
+	background-color: #fafbfc;
+}
+.down-main-div{
+	width: 100%;
+}
+.down-main-div .down-left{
+	width: 15%;
+	float:left;
+	height:100px;
+	
+}
+.down-main-div .down-center{
+	width: 70%;
+	float:left;
+	height:1000px;
+	
+}
+.down-main-div .down-right{
+	width: 15%;
+	float:left;
+	height:100px;
+	
+}
+.down-main-div .down-center .down-type{
+	width: 100%;
+	height: 100px;
+	background-color: #fff;
+}
+.down-main-div .down-center .down-title{
+	display: block;
+	line-height: 54px;
+	width: 110px;
+	text-align:center;
+	float: left;
+}
+.down-main-div .down-center .down-title-list{
+	float: left;
+	width: 80%;
+}
+.down-main-div .down-center .down-title-list ul{
+	padding-left: 0px;
+}
+.down-main-div .down-center .down-title-list ul li{
+	list-style: none;
+	float: left;
+}
+.down-main-div .down-center .down-title-list ul li span{
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+}
+.redcolor{
+	color: red;
+}
+.down-main-div .down-center .down-input{
+	display: block;
+	line-height: 54px;
+	text-align:center;
+	width:50%;
+	float: left;
+}
+.down-search{
+	background-color: #fff;
+	height: 54px;
+	margin-bottom: 1px;
+	margin-top: 1px;
+}
+.down-search-input{
+	width: 100%;
+	height: 20px;
+	margin-top: 12px;
+	border-radius:3px;
+	height: 30px;
+}
+.down-main-div .down-center .down-btn{
+	display: block;
+	line-height: 54px;
+	width: 110px;
+	text-align:center;
+	float: left;
+	margin-left: 7%;
+}
+.down-main-div .down-center .down-btn2{
+	display: block;
+	line-height: 54px;
+	width: 110px;
+	text-align:center;
+	float: left;
+	margin-left: 3%;
+}
+.down-search-btn{
+	margin-top: 12px;
+	border-radius:30px;
+	width: 80%;	
+	background-color: red;
+	border-color: red;
+	color: #fff;
+	border: 0px;
+	height: 30px;
+}
+
+.down-content-title{
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+}
+.down-content-title .new-upload{
+	line-height: 50px;
+	width: 100px;
+	text-align: center;
+	cursor:pointer;
+	display: inline-block;
+	color: red;
+}
+.down-content-title .more-load{
+	line-height: 50px;
+	display: inline-block;
+	width: 80px;
+	cursor:pointer;
+	text-align: center;
+}
+.down-content-list{
+	background-color: #fff;
+}
+
+.down-content-list-dl{
+	width: 100%;
+	height: 95px;
+	display: inline-block;
+	background-color: #fff;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background: url(line_1.gif) repeat-x bottom;
+}
+.down-content-list-dt{
+	width: 45px;
+	height: 52px;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+.down-content-img{
+	width: 42px;
+	height: 48px;
+	display: inline-block;
+}
+.down-content-list-dd{
+	height: 66px;
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 6px;
+	width: 700px;
+}
+.search-p{
+	margin-top: 1px;
+	margin-bottom: 0px;
+	height: 40px;
+	width: 100%;
+	color: #666;
+	font-size: 12px;
+}
+.down-content-list-div label{
+	display: inline-block;
+	width: 180px;
+	color: #999;
+	font-size: 14px;
+	
+}
+.click-delete{
+	display: block;
+	float: right;
+	margin-right: 10%;
+	margin-top: -35px;
+	color: #999;
+	cursor: pointer;	
+}
+.click-delete:HOVER{
+	color:red;
+}
+.click-delete1{
+	display: block;
+	float: right;
+	margin-right: 10%;
+	margin-top: 30px;
+	color: #999;
+	cursor: pointer;	
+}
+.click-delete1:HOVER{
+	color:red;
+}
+.down-content-list-a{
+	color: #2e2e2e;
+	font-weight: 700;
+	font-size: 16px;
+	cursor: pointer;
+}
+.down-content-list-a:HOVER {
+	color: red;
+}
+.down-click{
+	display: block;
+	float: right;
+	margin-right: 10%;
+	margin-top: 15px;
+	color: #999;
+	cursor: pointer;
+}
+.down-click:HOVER {
+	color: red;
+}
+
+
+.down-file-div{
+	display: none;
+	width: 600px;
+	height: 300px;
+	z-index: 99;
+	background-color: #fff;
+	position: absolute;
+	margin-left: 17%;
+}
+.down-file-div .file-name-div{
+	width: 80%;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 10%;
+}
+.file-name-label{
+	display: inline-block;
+	width: 20%;
+	text-align:right;
+	margin-right: 10px;
+	line-height: 50px;
+	border-radius:3px;
+}
+.file-name-text{
+	width: 60%;
+	line-height: 35px;
+	border-radius:3px;
+}
+.down-file-div .file-des-div{
+	width: 80%;
+	height: 60px;
+	margin-left: 10%;
+}
+.file-des-label{
+	display: inline-block;
+	width: 20%;
+	text-align:right;
+	margin-right: 10px;
+	line-height: 50px;
+	margin-top:-20px;
+	float: left;
+	
+}
+.file-des-text{
+	width: 60%;
+	line-height: 25px;
+	margin-left: 4px;
+	border-radius:3px;
+	
+}
+.down-file-div .file-uploadfile-div{
+	width: 80%;
+	margin-left: 10%;
+}
+.file-uploadfile-label{
+	display: inline-block;
+	width: 20%;
+	text-align:right;
+	margin-right: 10px;
+	line-height: 50px;
+	
+}
+.file-btn-div{
+	width: 80%;
+	height:50px;
+	margin-top: 30px;
+	margin-left: 10%;
+}
+.down-submit{
+	width: 60px;
+	text-align: center;
+	background-color: red;
+	border-color: red;
+	border-radius:30px;
+	margin-left: 23%;
+}
+.down-reset{
+	width: 60px;
+	text-align: center;
+	background-color: red;
+	border-color: red;
+	border-radius:30px;
+	margin-left: 15%;
+}
+.down-file-div .file-type-div{
+	width: 80%;
+	height: 40px;
+	margin-left: 10%;
+	margin-bottom: 10px;
+}
+.file-type-label{
+	display: inline-block;
+	width: 20%;
+	text-align:right;
+	margin-right: 10px;
+	line-height: 40px;
+	border-radius:3px;
+}
+.file-type-select{
+	width: 30%;
+	height: 35px;	
+	border-radius:3px;
+}
+
+.footdiv{
+	width: 100%;
+	text-align: center;
+	color: red;
+	font-style:200;
+	line-height: 40px;
+}

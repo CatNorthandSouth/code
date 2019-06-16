@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsFileHistoryMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsFileHistory" >
+    <id column="down_id" property="downId" jdbcType="INTEGER" />
+    <result column="file_id" property="fileId" jdbcType="INTEGER" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="file_create_time" property="fileCreateTime" jdbcType="TIMESTAMP" />
+    <result column="file_up_admin" property="fileUpAdmin" jdbcType="VARCHAR" />
+    <result column="file_up_id" property="fileUpId" jdbcType="INTEGER" />
+    <result column="file_load_count" property="fileLoadCount" jdbcType="INTEGER" />
+    <result column="file_size" property="fileSize" jdbcType="DOUBLE" />
+    <result column="file_type" property="fileType" jdbcType="INTEGER" />
+    <result column="file_des" property="fileDes" jdbcType="VARCHAR" />
+    <result column="file_picture" property="filePicture" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    down_id, file_id, file_name, file_path, file_create_time, file_up_admin, file_up_id, 
+    file_load_count, file_size, file_type, file_des, file_picture
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_file_history
+    where down_id = #{downId,jdbcType=INTEGER}
+  </select>
+   <select id="selectByfileAdminId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_file_history
+    where file_up_id = #{fileUpId,jdbcType=INTEGER} order by file_create_time desc
+  </select> 
+  
+  
+   <select id="selectfiletimesortByfileType" resultMap="BaseResultMap" parameterType="cn.ts.entity.BsFileHistory" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_file_history where file_type = #{fileType,jdbcType=INTEGER} and 
+    file_up_id = #{fileUpId,jdbcType=INTEGER} order by file_create_time desc
+  </select> 
+  <select id="selectBySearchTimeSortNo" resultMap="BaseResultMap" parameterType="cn.ts.entity.BsFileHistory">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_file_history 
+    where (
+    <if test="fileName != null">
+    	file_name like concat('%',#{fileName,jdbcType=VARCHAR},'%') 
+    </if>
+    <if test="fileUpAdmin != null">
+    	or file_up_admin like concat('%',#{fileUpAdmin,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="fileDes != null">
+    	or file_des like concat('%',#{fileDes,jdbcType=VARCHAR},'%')
+    </if>) and file_up_id = #{fileUpId,jdbcType=INTEGER}
+    	order by file_create_time desc
+  </select> 
+  <select id="selectBySearchTimeSort" resultMap="BaseResultMap" parameterType="cn.ts.entity.BsFileHistory">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_file_history 
+    where (
+    <if test="fileName != null">
+    	file_name like concat('%',#{fileName,jdbcType=VARCHAR},'%') 
+    </if>
+    <if test="fileUpAdmin != null">
+    	or file_up_admin like concat('%',#{fileUpAdmin,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="fileDes != null">
+    	or file_des like concat('%',#{fileDes,jdbcType=VARCHAR},'%')
+    </if> and 
+    	file_type = #{fileType,jdbcType=INTEGER} ) and file_up_id = #{fileUpId,jdbcType=INTEGER} order by file_create_time desc
+  </select>  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_file_history
+    where down_id = #{downId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ts.entity.BsFileHistory" >
+    insert into bs_file_history (down_id, file_id, file_name, 
+      file_path, file_create_time, file_up_admin, 
+      file_up_id, file_load_count, file_size, 
+      file_type, file_des, file_picture
+      )
+    values (#{downId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, 
+      #{filePath,jdbcType=VARCHAR}, #{fileCreateTime,jdbcType=TIMESTAMP}, #{fileUpAdmin,jdbcType=VARCHAR}, 
+      #{fileUpId,jdbcType=INTEGER}, #{fileLoadCount,jdbcType=INTEGER}, #{fileSize,jdbcType=DOUBLE}, 
+      #{fileType,jdbcType=INTEGER}, #{fileDes,jdbcType=VARCHAR}, #{filePicture,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsFileHistory" >
+    insert into bs_file_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="downId != null" >
+        down_id,
+      </if>
+      <if test="fileId != null" >
+        file_id,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="fileCreateTime != null" >
+        file_create_time,
+      </if>
+      <if test="fileUpAdmin != null" >
+        file_up_admin,
+      </if>
+      <if test="fileUpId != null" >
+        file_up_id,
+      </if>
+      <if test="fileLoadCount != null" >
+        file_load_count,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
+      </if>
+      <if test="fileType != null" >
+        file_type,
+      </if>
+      <if test="fileDes != null" >
+        file_des,
+      </if>
+      <if test="filePicture != null" >
+        file_picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="downId != null" >
+        #{downId,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileCreateTime != null" >
+        #{fileCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileUpAdmin != null" >
+        #{fileUpAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUpId != null" >
+        #{fileUpId,jdbcType=INTEGER},
+      </if>
+      <if test="fileLoadCount != null" >
+        #{fileLoadCount,jdbcType=INTEGER},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=DOUBLE},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="fileDes != null" >
+        #{fileDes,jdbcType=VARCHAR},
+      </if>
+      <if test="filePicture != null" >
+        #{filePicture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsFileHistory" >
+    update bs_file_history
+    <set >
+      <if test="fileId != null" >
+        file_id = #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileCreateTime != null" >
+        file_create_time = #{fileCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileUpAdmin != null" >
+        file_up_admin = #{fileUpAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUpId != null" >
+        file_up_id = #{fileUpId,jdbcType=INTEGER},
+      </if>
+      <if test="fileLoadCount != null" >
+        file_load_count = #{fileLoadCount,jdbcType=INTEGER},
+      </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=DOUBLE},
+      </if>
+      <if test="fileType != null" >
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="fileDes != null" >
+        file_des = #{fileDes,jdbcType=VARCHAR},
+      </if>
+      <if test="filePicture != null" >
+        file_picture = #{filePicture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where down_id = #{downId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsFileHistory" >
+    update bs_file_history
+    set file_id = #{fileId,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      file_create_time = #{fileCreateTime,jdbcType=TIMESTAMP},
+      file_up_admin = #{fileUpAdmin,jdbcType=VARCHAR},
+      file_up_id = #{fileUpId,jdbcType=INTEGER},
+      file_load_count = #{fileLoadCount,jdbcType=INTEGER},
+      file_size = #{fileSize,jdbcType=DOUBLE},
+      file_type = #{fileType,jdbcType=INTEGER},
+      file_des = #{fileDes,jdbcType=VARCHAR},
+      file_picture = #{filePicture,jdbcType=VARCHAR}
+    where down_id = #{downId,jdbcType=INTEGER}
+  </update>
+</mapper>

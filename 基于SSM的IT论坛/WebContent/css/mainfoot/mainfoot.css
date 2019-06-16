@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+.mainfootpage{
+	margin-top:10px;
+	width: 100%;
+	min-width:900px;
+	height: 120px;
+	
+}
+.mainfootpagediv{
+	width: 100%;
+	height: 50px;
+}
+.mainfootpagediv-ul{
+	margin-left: 15%;
+	width: 70%;
+	display: block;
+}
+.mainfootpagediv-ul-li{
+	text-decoration: none;
+	list-style: none;
+	float: left;
+	margin-top:2px;
+	margin-left: 20px;
+}
+.mainfootpagediv-women1{
+	width: 100%;
+	min-width:900px;
+	height:40px;
+	display: block;	
+}
+.mainfootpagedivspan{
+	display: block;
+	width:900px;
+	text-align:center;
+	margin-left: 18%;
+}
+.mainfootpagedivspan1{
+	display: block;
+	width:900px;
+	text-align:center;
+	margin-left: 18%;
+}

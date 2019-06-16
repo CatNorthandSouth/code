@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+.tribune-hot-content .hot-content-title{
+	line-height:40px;
+	height:40px;
+	border-bottom:1px solid #e3e3e3;
+}
+.tribune-hot-content .hot-content-title span {
+	display: inline-block;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size: 14px;
+    color: #707070;
+    font-weight: 700;	
+}
+.tribune-hot-content .hot-content-title .hot-content-more {
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    font-size: 14px;
+    color: #3399ea;
+    font-weight: 700;	
+}
+.tribune-hot-content .hot-content-list {
+	padding: 10px 0;
+}
+.tribune-hot-content .hot-content-list li em {
+    width: 4%;
+    text-align: left;
+    color: #999;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 25px;
+    font-weight: 700;
+    font-style: disc;	
+}
+.tribune-hot-content .hot-content-list li a {
+    width: 93%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 14px;	
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;	
+    text-decoration:none;
+}
+.tribune-hot-content .hot-content-list li a:hover{
+	color:red;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsRankMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsRank" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="pre_rank" property="preRank" jdbcType="INTEGER" />
+    <result column="now_rank" property="nowRank" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, pre_rank, now_rank
+  </sql>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_rank
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_rank
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByUserId" parameterType="java.lang.Integer" >
+    delete from bs_rank
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ts.entity.BsRank" >
+    insert into bs_rank (id, user_id, pre_rank, 
+      now_rank)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{preRank,jdbcType=INTEGER}, 
+      #{nowRank,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsRank" >
+    insert into bs_rank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="preRank != null" >
+        pre_rank,
+      </if>
+      <if test="nowRank != null" >
+        now_rank,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="preRank != null" >
+        #{preRank,jdbcType=INTEGER},
+      </if>
+      <if test="nowRank != null" >
+        #{nowRank,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsRank" >
+    update bs_rank
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="preRank != null" >
+        pre_rank = #{preRank,jdbcType=INTEGER},
+      </if>
+      <if test="nowRank != null" >
+        now_rank = #{nowRank,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsRank" >
+    update bs_rank
+    set user_id = #{userId,jdbcType=INTEGER},
+      pre_rank = #{preRank,jdbcType=INTEGER},
+      now_rank = #{nowRank,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

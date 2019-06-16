@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsNiurenNowMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsNiurenNow" >
+    <id column="niuren_id" property="niurenId" jdbcType="INTEGER" />
+    <result column="niuren_admin" property="niurenAdmin" jdbcType="VARCHAR" />
+    <result column="niuren_photo" property="niurenPhoto" jdbcType="VARCHAR" />
+    <result column="niuren_week_score" property="niurenWeekScore" jdbcType="INTEGER" />
+    <result column="niuren_month_score" property="niurenMonthScore" jdbcType="INTEGER" />
+    <result column="niuren_year_score" property="niurenYearScore" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    niuren_id, niuren_admin, niuren_photo, niuren_week_score, niuren_month_score, niuren_year_score, 
+    user_id
+  </sql>
+  <select id="selectByUser_id" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_niuren_now where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllNiuRen" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_niuren_now
+  </select>
+  <select id="selectByYearScore" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_niuren_now order by niuren_year_score desc
+  </select>
+  <select id="selectByMonthScore" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_niuren_now order by niuren_month_score desc
+  </select>
+  <select id="selectByWeekScore" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_niuren_now order by niuren_week_score desc
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_niuren_now
+    where niuren_id = #{niurenId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_niuren_now
+    where niuren_id = #{niurenId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertNiuRen" parameterType="cn.ts.entity.BsNiurenNow" >
+    insert into bs_niuren_now (niuren_id, niuren_admin, niuren_photo, 
+      niuren_week_score, niuren_month_score, niuren_year_score, 
+      user_id)
+    values (#{niurenId,jdbcType=INTEGER}, #{niurenAdmin,jdbcType=VARCHAR}, #{niurenPhoto,jdbcType=VARCHAR}, 
+      #{niurenWeekScore,jdbcType=INTEGER}, #{niurenMonthScore,jdbcType=INTEGER}, #{niurenYearScore,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsNiurenNow" >
+    insert into bs_niuren_now
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="niurenId != null" >
+        niuren_id,
+      </if>
+      <if test="niurenAdmin != null" >
+        niuren_admin,
+      </if>
+      <if test="niurenPhoto != null" >
+        niuren_photo,
+      </if>
+      <if test="niurenWeekScore != null" >
+        niuren_week_score,
+      </if>
+      <if test="niurenMonthScore != null" >
+        niuren_month_score,
+      </if>
+      <if test="niurenYearScore != null" >
+        niuren_year_score,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="niurenId != null" >
+        #{niurenId,jdbcType=INTEGER},
+      </if>
+      <if test="niurenAdmin != null" >
+        #{niurenAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="niurenPhoto != null" >
+        #{niurenPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="niurenWeekScore != null" >
+        #{niurenWeekScore,jdbcType=INTEGER},
+      </if>
+      <if test="niurenMonthScore != null" >
+        #{niurenMonthScore,jdbcType=INTEGER},
+      </if>
+      <if test="niurenYearScore != null" >
+        #{niurenYearScore,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsNiurenNow" >
+    update bs_niuren_now
+    <set >
+      <if test="niurenAdmin != null" >
+        niuren_admin = #{niurenAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="niurenPhoto != null" >
+        niuren_photo = #{niurenPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="niurenWeekScore != null" >
+        niuren_week_score = #{niurenWeekScore,jdbcType=INTEGER},
+      </if>
+      <if test="niurenMonthScore != null" >
+        niuren_month_score = #{niurenMonthScore,jdbcType=INTEGER},
+      </if>
+      <if test="niurenYearScore != null" >
+        niuren_year_score = #{niurenYearScore,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where niuren_id = #{niurenId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsNiurenNow" >
+    update bs_niuren_now
+    set niuren_admin = #{niurenAdmin,jdbcType=VARCHAR},
+      niuren_photo = #{niurenPhoto,jdbcType=VARCHAR},
+      niuren_week_score = #{niurenWeekScore,jdbcType=INTEGER},
+      niuren_month_score = #{niurenMonthScore,jdbcType=INTEGER},
+      niuren_year_score = #{niurenYearScore,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

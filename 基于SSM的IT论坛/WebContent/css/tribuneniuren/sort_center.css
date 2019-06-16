@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+.center-body-content {
+	width: 94%;
+	margin-top: 30px;
+	margin-left: 25px;
+	margin-right: 25px;
+	background-color: white;
+	float:left;
+	
+}
+.center-body-content .sort-content-box .sort-top {
+	font-size: 14px;
+	border-bottom: 1px;
+	border-bottom-style: solid;
+	border-color: gray;
+	line-height:32px;
+	height:32px;
+	float:left;
+	display:inline-block;
+	width:100%;
+	
+}
+.center-body-content .sort-content-box .sort-top .sort-top-right {
+	float: right;
+	color: 00ffff;
+}
+.center-body-content .sort-content-box .sort-top .sort-top-right a {
+	text-decoration: none;
+	font-size: 14px
+}
+.center-body-content .sort-content-box .sort-top .sort-top-right .change_group {
+	margin-right: 10px;
+	display: inline-block;
+	color: 00ffff;
+}
+.sort-bottom-content {
+	width: 100%;
+	background-color: #D1D1D1;
+}
+/*123*/
+
+
+.sort-bottom-content .sort-content-list {
+	float: left;
+	width: 14.9%;
+	display: inline-block;
+} 
+.sort-bottom-content .sort-content-list dt {
+	/* width: 100px; */
+	height: 74px;
+	margin-top:18px;
+}
+.sort-bottom-content .sort-content-list dt img {
+	width: 64px;
+	height: 64px;
+	margin-left: 18px;
+}
+.sort-bottom-content .sort-content-list dd {
+	width:100px;
+	text-align: center;
+	display: inline-block;
+}
+.sort-bottom-content .sort-content-list dd a {
+	margin-bottom:3px;
+	display: inline-block;
+	text-decoration:none;
+}
+.sort-bottom-content .sort-content-list dd a:hover {
+	color:red;
+}
+.sort-bottom-content .sort-content-list dd .user_nick_name {
+    display: block;
+    font-weight: 700;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #3d3d3d;	
+}
+.sort-bottom-content .sort-content-list dd p {
+	display:inline-block;
+	margin-bottom:1px;
+}
+.sort-bottom-content .sort-content-list dd .genius_att {
+    display: inline-block;
+    border: 1px solid #ca0c16;
+    height: 18px;
+    line-height: 16px;
+    padding: 0 16px;
+    color: #ca0c16;
+    border-radius: 2px;
+}
+.sort-bottom-content .sort-content-list dd .genius_att:hover {
+	background-color:red;
+	color:white;
+}
+.img-niurenPhoto{
+	border-radius:3px;
+}

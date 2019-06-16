@@ -1,0 +1,128 @@
+body{
+	margin: 0px 0px 0px 0px;
+}
+.mainHeader-div{
+	width: 100%;
+	height: 60px;
+	background-color: #393D49;
+}
+.mainHeader-div ul {
+	margin-left: 16%;
+}
+.mainHeader-div li{
+	list-style:none;
+	float: left;
+	line-height: 60px;
+	text-align: center;	
+}
+.mainHeader-div .mainHeader-li{
+	width: 8%;	
+	cursor: pointer;
+	color: #fafbfc;
+}
+.mainHeader-div .mainHeader-input{
+	margin-left: 34%;
+	line-height: 60px;
+}
+.mainHeader-input-div{
+	z-index: 99; 
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	margin-top: -43px;
+	margin-left: 3px;
+}
+.mainHeader-input-img{
+	height: 25px;
+	width: 25px;
+	margin-top: -30px;
+}
+.mainHeader-div .mainHeader-input input{
+	line-height: 30px;
+	width: 100%;
+	border-radius:3px;
+	text-indent: 30px;
+	
+}
+.mainHeader-mail{
+	line-height: 60px;
+	width: 12%;
+}
+.mainHeader-mail div{
+	float: left;
+	margin-top: 15px;
+	margin-left: 40%;
+}
+.mainHeader-mail img{
+	width: 40px;
+	height: 30px;
+	border-radius:6px;
+	float: left;
+	display: inline-block;
+}
+.mainHeader-mail span{
+	color: #fafbfc;
+}
+.jingxuan-div{
+	margin-left:21%;
+	width: 8%;
+	position: absolute;
+	z-index: 90;
+	display: none;
+	background-color: #fff;
+}
+.jingxuan-div ul{
+	width: 100%;
+	padding: 0 0 0 0;
+}
+.jingxuan-div ul li{
+	list-style: none;
+	width: 100%;
+	text-align: center;
+	line-height:40px;
+	
+}
+.jingxuan-div ul li:HOVER{
+	background-color: #fafbfc;
+}
+.mainHeader-div .mainHeader-li:HOVER{
+	background-color:  #337ab7;
+}
+.mainHeader-div .mainHeader-picture{
+	line-height: 60px;
+	width: 8%;
+	margin-left: 3%
+}
+.mainHeader-div .mainHeader-picture .picture-lable{
+	float: left;
+}
+.mainHeader-div .mainHeader-picture .mainHeader-picture-div{
+	margin-top: 5px;
+	float: left;
+}
+.mainHeader-div .mainHeader-picture .mainHeader-picture-div img{
+	width: 45px;
+	height: 45px;
+	border-radius:30px;
+}
+.geren-div{
+	margin-left:91%;
+	width: 8%;
+	position: absolute;
+	z-index: 90;
+	display: none;
+	background-color: #fff;
+}
+.geren-div ul{
+	width: 100%;
+	padding: 0 0 0 0;
+}
+.geren-div ul li{
+	list-style: none;
+	width: 100%;
+	text-align: center;
+	line-height:40px;	
+}
+.geren-div ul li:HOVER{
+	background-color: #fafbfc;
+}

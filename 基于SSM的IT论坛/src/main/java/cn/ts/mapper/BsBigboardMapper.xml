@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsBigboardMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsBigboard" >
+    <id column="bibo_id" property="biboId" jdbcType="INTEGER" />
+    <result column="bibo_title" property="biboTitle" jdbcType="VARCHAR" />
+    <result column="bibo_admin" property="biboAdmin" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bibo_id, bibo_title, bibo_admin
+  </sql>
+   <select id="selectBsBigboard" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_bigboard
+  </select>
+  <select id="selectBsBigboardByKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_bigboard
+    where bibo_id = #{biboId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_bigboard
+    where bibo_id = #{biboId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertBigboardMapper" parameterType="cn.ts.entity.BsBigboard" >
+    insert into bs_bigboard (bibo_id, bibo_title, bibo_admin
+      )
+    values (#{biboId,jdbcType=INTEGER}, #{biboTitle,jdbcType=VARCHAR}, #{biboAdmin,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsBigboard" >
+    insert into bs_bigboard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="biboId != null" >
+        bibo_id,
+      </if>
+      <if test="biboTitle != null" >
+        bibo_title,
+      </if>
+      <if test="biboAdmin != null" >
+        bibo_admin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="biboId != null" >
+        #{biboId,jdbcType=INTEGER},
+      </if>
+      <if test="biboTitle != null" >
+        #{biboTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="biboAdmin != null" >
+        #{biboAdmin,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsBigboard" >
+    update bs_bigboard
+    <set >
+      <if test="biboTitle != null" >
+        bibo_title = #{biboTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="biboAdmin != null" >
+        bibo_admin = #{biboAdmin,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bibo_id = #{biboId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsBigboard" >
+    update bs_bigboard
+    set bibo_title = #{biboTitle,jdbcType=VARCHAR},
+      bibo_admin = #{biboAdmin,jdbcType=VARCHAR}
+    where bibo_id = #{biboId,jdbcType=INTEGER}
+  </update>
+</mapper>

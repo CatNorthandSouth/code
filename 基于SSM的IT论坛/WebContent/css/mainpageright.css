@@ -1,0 +1,210 @@
+@CHARSET "UTF-8";
+@font-face {
+	font-family:"iconfont";
+	src: url("fonts/iconfont.ttf");
+}
+.right-body-box {
+    margin-bottom: 8px;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.04);	
+    background-color: white;
+}
+/*
+个人论坛信息展示
+*/
+.right-body-personshow {
+	padding: 16px 16px 8px;
+}
+.right-body-personshow .per_box {
+    padding-bottom: 14px;
+    border-bottom: solid 1px #f2f2f2;
+}
+.right-body-box  dd {
+    display: block;
+    margin-inline-start: 40px;
+}
+.right-body-box  dt {
+    display: block;
+    list-style: none;
+}
+.right-body-personshow .per_box dt a img {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+}
+.right-body-box img{
+	vertical-align: middle;
+	border: none;
+    outline: 0;
+}
+.right-body-personshow .per_box dd {
+    margin-left: 87px;
+    position: absolute;
+    top: 78px
+}
+.right-body-personshow .per_box dd h4 .user_name {
+    font-size: 14px;
+    color: #4f4f4f;
+    font-weight: 700;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 24px;
+}
+.right-body-personshow .per_box dd .per_intro, .right-body-personshow .per_box dd .per_sign {
+    font-size: 12px;
+    color: #999;
+    line-height: 24px;
+}
+
+.right-body-personshow .bbs_per_b {
+    padding: 14px 0 0;
+    margin: 0; 
+    font-weight: 400;
+}
+.right-body-personshow .bbs_per_b .bbs_per_b_list li:nth-child(1), .bbs_per_wrap .bbs_per_b .bbs_per_b_list li:nth-child(4) {
+    margin-left: 0;
+}
+.right-body-personshow .bbs_per_b .bbs_per_b_list li {
+    width: 75px;
+    float: left;
+    margin: 0 0 10px 0px;
+    /* list-style: none; */
+}
+.right-body-personshow .bbs_per_b .bbs_per_b_list li em, .right-body-personshow .bbs_per_b .bbs_per_b_list li img, .right-body-personshow .bbs_per_b .bbs_per_b_list li svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+/*
+今日要闻
+*/
+.right-body-todaynews,.right-body-notice {
+    margin: 8px 8px 8px 16px;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.04);	
+}
+
+.today-news-title {
+	font-size: 16px;
+	color: #4f4f4f;
+	height: 28px;
+	margin-bottom: 5px;
+	position: relative;
+	margin-top: 15px;
+	margin-left: 2px
+}
+.today-news-title .news-line {
+	display: inline-block;
+	float: left;
+	width: 5px;
+	height: 15px;
+	background-color: red;
+	overflow: hidden;
+	margin: 0 4px 0 0px;
+}
+.today-news-title .news-title {
+	display: inline-block;
+	float: left;
+	font-size: 16px;
+	color: #2c3033;
+}
+.today-news-content {
+	margin-bottom: 8px;
+	margin-left: 2px
+}
+.today-news-content .news-content-list .img-box {
+	float: left;
+	position: relative;
+
+	margin-left: -40px
+}
+ .today-news-content .news-content-list .img-box img {
+	display: inline-block;
+	width: 64px;
+	height: 48px;
+	border-radius: 3px;
+	vertical-align: top;
+	object-fit: cover;
+	float: left;
+}
+.news-content-list li {
+	display: inline-block;
+	margin-bottom: 10px; 
+} 
+.today-news-content .news-content-list .content-box {
+	padding-top: 2px;
+}
+.today-news-content .news-content-list .content-box .content_name a{
+	display: inline-block;
+	margin-bottom: 3px;
+	font-size: 14px;
+	color: #3d3d3d;
+	letter-spacing: 0;
+	line-height: 22px;
+	max-width: 180px; 
+	overflow: hidden;
+	cursor: pointer;
+	font-weight: bold;	
+}
+.today-news-content .news-content-list .content-box {
+	position: relative;
+	margin-left: 28px
+}
+.today-news-content .news-content-list .content-box a:HOVER {
+	color: red;
+	text-decoration: none;
+} 
+/*
+论坛公告
+*/
+ .tribune-notice-title {
+	margin-left: 0px;
+	font-size: 16px;
+	color: #4f4f4f;
+	height: 28px;
+	position: relative;
+	margin-top: 15px;
+}
+.tribune-notice-title .notice-title {
+	display: inline-block;
+	float: left;
+	font-size: 16px;
+	color: #2c3033;	
+
+}
+.right-body-notice hr {
+	margin-left: 0px;
+	display: inline-block;
+	margin-top: -5px;
+	background-color: #cccccc;
+	width: 90%
+} 
+.tribune-notice-list li {
+	display: inline-block;
+	margin-bottom: 0px; 
+} 
+.tribune-notice-content .tribune-notice-list .content-box {
+	padding-top: 2px;
+}
+.tribune-notice-content .tribune-notice-list .content-box .content_name a{
+	display: inline-block;
+	margin-bottom: 3px;
+	font-size: 14px;
+	color: #3d3d3d;
+	letter-spacing: 0;
+	line-height: 22px;
+	max-width: 250px; 
+	overflow: hidden;
+	cursor: pointer;
+	font-weight: bold;	
+}
+.tribune-notice-content .tribune-notice-list .content-box {
+	position: relative;
+	margin-left: 0px
+} 
+.tribune-notice-content .tribune-notice-list .content-box a:HOVER {
+	color: red;
+	text-decoration: none;
+}

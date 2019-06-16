@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsPostReplyMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsPostReply" >
+    <id column="reply_id" property="replyId" jdbcType="INTEGER" />
+    <result column="reply_admin" property="replyAdmin" jdbcType="VARCHAR" />
+    <result column="reply_post_id" property="replyPostId" jdbcType="INTEGER" />
+    <result column="reply_smbo_id" property="replySmboId" jdbcType="INTEGER" />
+    <result column="reply_bibo_id" property="replyBiboId" jdbcType="INTEGER" />
+    <result column="reply_content" property="replyContent" jdbcType="VARCHAR" />
+    <result column="reply_create_time" property="replyCreateTime" jdbcType="TIMESTAMP" />
+    <result column="reply_good_count" property="replyGoodCount" jdbcType="INTEGER" />
+    <result column="reply_bad_count" property="replyBadCount" jdbcType="INTEGER" />
+    <result column="reply_score" property="replyScore" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reply_id, reply_admin, reply_post_id, reply_smbo_id, reply_bibo_id, reply_content, 
+    reply_create_time, reply_good_count, reply_bad_count, reply_score
+  </sql>
+  <select id="selectByTimeANDName" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_post_reply where reply_create_time between #{starttime,jdbcType=VARCHAR} and #{endtime,jdbcType=VARCHAR}
+    	and
+      reply_admin like concat('%',#{fileName,jdbcType=VARCHAR},'%')
+  </select>  
+  <select id="selectByTime" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_post_reply where reply_create_time between #{starttime,jdbcType=VARCHAR} and #{endtime,jdbcType=VARCHAR}
+  </select>   
+  <select id="selectByReplyAdmin" resultMap="BaseResultMap" parameterType="cn.ts.entity.BsPostReply" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_post_reply where reply_admin like concat('%',#{replyAdmin,jdbcType=VARCHAR},'%')
+  </select>    
+  
+  
+  
+  <select id="selectBsPostReply" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_post_reply 
+  </select>
+  <select id="selectreplyId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_post_reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </select>  
+  
+  <select id="selectBsPostReplyByreplyPostId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_post_reply
+    where reply_post_id = #{replyPostId,jdbcType=INTEGER} order by reply_create_time asc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_post_reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByreplyPostId" parameterType="java.lang.Integer" >
+    delete from bs_post_reply
+    where reply_post_id = #{replyPostId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ts.entity.BsPostReply" >
+    insert into bs_post_reply (reply_id, reply_admin, reply_post_id, 
+      reply_smbo_id, reply_bibo_id, reply_content, 
+      reply_create_time, reply_good_count, reply_bad_count, 
+      reply_score)
+    values (#{replyId,jdbcType=INTEGER}, #{replyAdmin,jdbcType=VARCHAR}, #{replyPostId,jdbcType=INTEGER}, 
+      #{replySmboId,jdbcType=INTEGER}, #{replyBiboId,jdbcType=INTEGER}, #{replyContent,jdbcType=VARCHAR}, 
+      #{replyCreateTime,jdbcType=TIMESTAMP}, #{replyGoodCount,jdbcType=INTEGER}, #{replyBadCount,jdbcType=INTEGER}, 
+      #{replyScore,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertPost_reply" parameterType="cn.ts.entity.BsPostReply" >
+    insert into bs_post_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        reply_id,
+      </if>
+      <if test="replyAdmin != null" >
+        reply_admin,
+      </if>
+      <if test="replyPostId != null" >
+        reply_post_id,
+      </if>
+      <if test="replySmboId != null" >
+        reply_smbo_id,
+      </if>
+      <if test="replyBiboId != null" >
+        reply_bibo_id,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+      <if test="replyCreateTime != null" >
+        reply_create_time,
+      </if>
+      <if test="replyGoodCount != null" >
+        reply_good_count,
+      </if>
+      <if test="replyBadCount != null" >
+        reply_bad_count,
+      </if>
+      <if test="replyScore != null" >
+        reply_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replyAdmin != null" >
+        #{replyAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="replyPostId != null" >
+        #{replyPostId,jdbcType=INTEGER},
+      </if>
+      <if test="replySmboId != null" >
+        #{replySmboId,jdbcType=INTEGER},
+      </if>
+      <if test="replyBiboId != null" >
+        #{replyBiboId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCreateTime != null" >
+        #{replyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyGoodCount != null" >
+        #{replyGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyBadCount != null" >
+        #{replyBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyScore != null" >
+        #{replyScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsPostReply" >
+    update bs_post_reply
+    <set >
+      <if test="replyAdmin != null" >
+        reply_admin = #{replyAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="replyPostId != null" >
+        reply_post_id = #{replyPostId,jdbcType=INTEGER},
+      </if>
+      <if test="replySmboId != null" >
+        reply_smbo_id = #{replySmboId,jdbcType=INTEGER},
+      </if>
+      <if test="replyBiboId != null" >
+        reply_bibo_id = #{replyBiboId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCreateTime != null" >
+        reply_create_time = #{replyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyGoodCount != null" >
+        reply_good_count = #{replyGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyBadCount != null" >
+        reply_bad_count = #{replyBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyScore != null" >
+        reply_score = #{replyScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsPostReply" >
+    update bs_post_reply
+    set reply_admin = #{replyAdmin,jdbcType=VARCHAR},
+      reply_post_id = #{replyPostId,jdbcType=INTEGER},
+      reply_smbo_id = #{replySmboId,jdbcType=INTEGER},
+      reply_bibo_id = #{replyBiboId,jdbcType=INTEGER},
+      reply_content = #{replyContent,jdbcType=VARCHAR},
+      reply_create_time = #{replyCreateTime,jdbcType=TIMESTAMP},
+      reply_good_count = #{replyGoodCount,jdbcType=INTEGER},
+      reply_bad_count = #{replyBadCount,jdbcType=INTEGER},
+      reply_score = #{replyScore,jdbcType=INTEGER}
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+</mapper>

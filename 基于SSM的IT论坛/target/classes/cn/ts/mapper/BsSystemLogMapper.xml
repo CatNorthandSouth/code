@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsSystemLogMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsSystemLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="logintime" property="logintime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, content, userid, username, ip, logintime
+  </sql>
+    <select id="selectByAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_system_log
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_system_log
+    where userid = #{userid,jdbcType=INTEGER} order by logintime desc
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_system_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_system_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ts.entity.BsSystemLog" >
+    insert into bs_system_log (id, type, content, 
+      userid, username, ip, 
+      logintime)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{logintime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsSystemLog" >
+    insert into bs_system_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="logintime != null" >
+        logintime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsSystemLog" >
+    update bs_system_log
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        logintime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsSystemLog" >
+    update bs_system_log
+    set type = #{type,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      logintime = #{logintime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

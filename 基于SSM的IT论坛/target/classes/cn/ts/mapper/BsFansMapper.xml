@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsFansMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsFans" >
+    <id column="fans_id" property="fansId" jdbcType="INTEGER" />
+    <result column="my_fans_admin" property="myFansAdmin" jdbcType="VARCHAR" />
+    <result column="my_fans_photo" property="myFansPhoto" jdbcType="VARCHAR" />
+    <result column="my_fans_id" property="myFansId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fans_id, my_fans_admin, my_fans_photo, my_fans_id, user_id
+  </sql>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_fans
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+   <select id="selectByMyFansId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_fans
+    where my_fans_id = #{myFansId,jdbcType=INTEGER} 
+  </select>
+  <select id="selectByUserIdAndMyFansId" resultMap="BaseResultMap" parameterType="cn.ts.entity.BsFans" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_fans
+    where user_id = #{userId,jdbcType=INTEGER} and my_fans_id = #{myFansId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteBsFans" parameterType="cn.ts.entity.BsFans" >
+    delete from bs_fans
+    where user_id = #{userId,jdbcType=INTEGER} and my_fans_id = #{myFansId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertBsFans" parameterType="cn.ts.entity.BsFans" >
+    insert into bs_fans (fans_id, my_fans_admin, my_fans_photo, 
+      my_fans_id, user_id)
+    values (#{fansId,jdbcType=INTEGER}, #{myFansAdmin,jdbcType=VARCHAR}, #{myFansPhoto,jdbcType=VARCHAR}, 
+      #{myFansId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+  </insert>  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_fans
+    where fans_id = #{fansId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsFans" >
+    insert into bs_fans
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fansId != null" >
+        fans_id,
+      </if>
+      <if test="myFansAdmin != null" >
+        my_fans_admin,
+      </if>
+      <if test="myFansPhoto != null" >
+        my_fans_photo,
+      </if>
+      <if test="myFansId != null" >
+        my_fans_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fansId != null" >
+        #{fansId,jdbcType=INTEGER},
+      </if>
+      <if test="myFansAdmin != null" >
+        #{myFansAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="myFansPhoto != null" >
+        #{myFansPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="myFansId != null" >
+        #{myFansId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsFans" >
+    update bs_fans
+    <set >
+      <if test="myFansAdmin != null" >
+        my_fans_admin = #{myFansAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="myFansPhoto != null" >
+        my_fans_photo = #{myFansPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="myFansId != null" >
+        my_fans_id = #{myFansId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where fans_id = #{fansId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsFans" >
+    update bs_fans
+    set my_fans_admin = #{myFansAdmin,jdbcType=VARCHAR},
+      my_fans_photo = #{myFansPhoto,jdbcType=VARCHAR},
+      my_fans_id = #{myFansId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where fans_id = #{fansId,jdbcType=INTEGER}
+  </update>
+</mapper>

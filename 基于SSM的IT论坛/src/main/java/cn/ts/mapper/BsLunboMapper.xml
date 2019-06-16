@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsLunboMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsLunbo" >
+    <id column="lunbo_id" property="lunboId" jdbcType="INTEGER" />
+    <result column="lunbo_path" property="lunboPath" jdbcType="VARCHAR" />
+    <result column="lunbo_state" property="lunboState" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lunbo_id, lunbo_path, lunbo_state
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_lunbo
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_lunbo
+    where lunbo_id = #{lunboId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_lunbo
+    where lunbo_id = #{lunboId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ts.entity.BsLunbo" >
+    insert into bs_lunbo (lunbo_id, lunbo_path, lunbo_state
+      )
+    values (#{lunboId,jdbcType=INTEGER}, #{lunboPath,jdbcType=VARCHAR}, #{lunboState,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsLunbo" >
+    insert into bs_lunbo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lunboId != null" >
+        lunbo_id,
+      </if>
+      <if test="lunboPath != null" >
+        lunbo_path,
+      </if>
+      <if test="lunboState != null" >
+        lunbo_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lunboId != null" >
+        #{lunboId,jdbcType=INTEGER},
+      </if>
+      <if test="lunboPath != null" >
+        #{lunboPath,jdbcType=VARCHAR},
+      </if>
+      <if test="lunboState != null" >
+        #{lunboState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ts.entity.BsLunbo" >
+    update bs_lunbo
+    <set >
+      <if test="lunboPath != null" >
+        lunbo_path = #{lunboPath,jdbcType=VARCHAR},
+      </if>
+      <if test="lunboState != null" >
+        lunbo_state = #{lunboState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lunbo_id = #{lunboId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ts.entity.BsLunbo" >
+    update bs_lunbo
+    set lunbo_path = #{lunboPath,jdbcType=VARCHAR},
+      lunbo_state = #{lunboState,jdbcType=INTEGER}
+    where lunbo_id = #{lunboId,jdbcType=INTEGER}
+  </update>
+</mapper>

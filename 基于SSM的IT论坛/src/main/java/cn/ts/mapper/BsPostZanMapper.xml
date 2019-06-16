@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ts.mapper.BsPostZanMapper" >
+  <resultMap id="BaseResultMap" type="cn.ts.entity.BsPostZan" >
+    <result column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.ts.entity.BsPostZan" >
+    insert into bs_post_zan (post_id, user_id, state
+      )
+    values (#{postId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectPostZanGoogCount" parameterType="cn.ts.entity.BsPostZan" resultType="java.lang.Integer">
+  	select * from bs_post_zan where post_id=#{postId,jdbcType=INTEGER} and state= 1
+  </select>
+  <select id="selectPostZanBadCount" parameterType="cn.ts.entity.BsPostZan" resultType="java.lang.Integer">
+  	select * from bs_post_zan where post_id=#{postId,jdbcType=INTEGER} and state= 0
+  </select>
+  <select id="selectPostZan" parameterType="cn.ts.entity.BsPostZan" resultMap="BaseResultMap">
+  	select * from bs_post_zan where post_id=#{postId,jdbcType=INTEGER} and user_id=#{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deletePostcount" parameterType="cn.ts.entity.BsPostZan" >
+    delete from bs_post_zan
+    where post_id=#{postId,jdbcType=INTEGER} and user_id=#{userId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertSelective" parameterType="cn.ts.entity.BsPostZan" >
+    insert into bs_post_zan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postId != null" >
+        post_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postId != null" >
+        #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
